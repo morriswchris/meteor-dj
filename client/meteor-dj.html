@@ -1,0 +1,28 @@
+<head>
+    <title>socialdj</title>
+</head>
+
+<body>
+    {{> List}}
+</body>
+
+<template name="List">
+    <h1>Songs</h1>
+    {{#each Songs}}
+    {{>Song }}
+    {{/each}}
+</template>
+<template name="Song">
+    <h2>{{title}} - {{stream_url}} - {{playing}}</h2>  
+    <div>
+        <div>
+            {{#constant}}
+            <audio id="{{_id}}" controls="controls" preload="auto">
+                <source src="{{stream_url}}?client_id=0f46908c3c09f673750544d594136211" type="audio/mpeg">
+            </audio>
+            {{/constant}}
+        </div>
+        <a href="#" class="btn btn-primary play">Play</a>
+        <a href="#" class="btn btn-danger pause">Pause</a>
+    </div>
+</template>
